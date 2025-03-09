@@ -56,6 +56,14 @@ public class User implements UserDetails {
     @Embedded
     private RecordInfo recordInfo;
 
+    @OneToOne
+    @JoinColumn(name = "wallet_id", referencedColumnName = "id", nullable = false)
+    private Wallet wallet;
+
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
+    private Address address;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
